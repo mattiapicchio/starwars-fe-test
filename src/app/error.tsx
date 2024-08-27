@@ -2,12 +2,13 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { QUERY_KEY } from '@/utils/queryKeys'
 
 export default function Error({ error }: { error: Error & { digest?: string } }) {
   const router = useRouter()
 
   useEffect(() => {
-    // Log the error to an error reporting service
+    // TODO: Log the error to an error reporting service
     // eslint-disable-next-line no-console
     console.error(error)
   }, [error])
@@ -17,8 +18,8 @@ export default function Error({ error }: { error: Error & { digest?: string } })
       <h2>Something went wrong!</h2>
       <button
         onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => router.push('/?page=1')
+          // Attempt to recover by re-rendering the initial page
+          () => router.push(`/?${QUERY_KEY.PAGE}=1`)
         }
       >
         Try again
