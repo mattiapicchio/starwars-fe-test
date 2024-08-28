@@ -1,8 +1,12 @@
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import './globals.css'
+import MainHeader from '@/components/MainHeader'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Star Wars Ships',
@@ -17,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main>{children}</main>
+        <main className="bg-black-charcoal text-white">
+          <MainHeader />
+          {children}
+        </main>
       </body>
     </html>
   )
