@@ -1,5 +1,6 @@
 'use client'
 
+import { QUERY_KEY } from '@/utils/queryKeys'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -14,12 +15,12 @@ export default function SearchBar({ placeholder }: SearchBarProps) {
   const params = new URLSearchParams(searchParams)
   // Debounce the search requests to the database
   const onHandleSearch = useDebouncedCallback((term: string) => {
-    params.set('page', '1')
+    params.set(QUERY_KEY.PAGE, '1')
 
     if (term) {
-      params.set('query', term)
+      params.set(QUERY_KEY.QUERY, term)
     } else {
-      params.delete('query')
+      params.delete(QUERY_KEY.QUERY)
     }
 
     replace(`${pathname}?${params.toString()}`)
@@ -34,7 +35,7 @@ export default function SearchBar({ placeholder }: SearchBarProps) {
         className="rounded-md border border-yellow bg-black-rich px-4 py-2"
         placeholder={placeholder}
         onChange={(event) => onHandleSearch(event.target.value)}
-        defaultValue={searchParams.get('query')?.toString()} // Keep the input value in sync with the query param
+        defaultValue={searchParams.get(QUERY_KEY.QUERY)?.toString()} // Keep the input value in sync with the query param
       />
     </div>
   )

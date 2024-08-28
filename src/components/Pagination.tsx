@@ -1,5 +1,6 @@
 import { FetchStarshipsResponse } from '@/connectivity/api.starships/types.starships'
 import { classnames } from '@/utils/classnames'
+import { QUERY_KEY } from '@/utils/queryKeys'
 import Link from 'next/link'
 
 type PaginationProps = {
@@ -18,15 +19,17 @@ export default async function Pagination({
   const { previous, next } = listingData
 
   const handlePrevLink = () => {
-    if (searchQuery !== '') return `?page=${currentPage - 1}&query=${searchQuery}`
+    if (searchQuery !== '')
+      return `?${QUERY_KEY.PAGE}=${currentPage - 1}&${QUERY_KEY.QUERY}=${searchQuery}`
 
-    return `?page=${currentPage - 1}`
+    return `?${QUERY_KEY.PAGE}=${currentPage - 1}`
   }
 
   const handleNextLink = () => {
-    if (searchQuery !== '') return `?page=${currentPage + 1}&query=${searchQuery}`
+    if (searchQuery !== '')
+      return `?${QUERY_KEY.PAGE}=${currentPage + 1}&${QUERY_KEY.QUERY}=${searchQuery}`
 
-    return `?page=${currentPage + 1}`
+    return `?${QUERY_KEY.PAGE}=${currentPage + 1}`
   }
 
   return (
