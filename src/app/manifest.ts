@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Star Wars Ships',
+    name: 'Star Wars Starships',
     short_name: 'Star Wars',
     description: 'Technical assessment using the Star Wars API',
     start_url: '/',
@@ -12,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         src: '/favicon.ico',
-        sizes: 'any',
+        sizes: '64x64',
         type: 'image/x-icon',
       },
     ],
