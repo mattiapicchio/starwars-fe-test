@@ -26,7 +26,7 @@ const StarshipCard = ({ starship, className }: StarshipCardProps) => {
   return (
     <ol
       className={classnames(
-        'hover:shadow-custom-light transform rounded-md border border-yellow bg-black-rich p-3 font-light text-yellow transition-transform duration-300 ease-in-out hover:scale-105 [&>li>span:first-of-type]:text-white [&>li]:mt-2',
+        'transform rounded-md border border-yellow bg-black-rich p-3 font-light text-yellow transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-custom-light [&>li>span:first-of-type]:text-white [&>li]:mt-2',
         className,
       )}
     >
