@@ -1,13 +1,18 @@
 export const COLORS = {
   gray: {
     DEFAULT: '#707174',
-    dark: '#9C9C9C',
+    dark: '#5A5A5A',
     soft: '#CCCCCC',
+  },
+  black: {
+    DEFAULT: '#000',
+    rich: '#040307',
+    charcoal: '#1E1E1E',
   },
   current: 'currentColor',
   platinum: '#E5E5E5',
   transparent: 'transparent',
-  yellow: '#F4D9A6',
+  yellow: '#FFE300',
   sunglow: '#FCA311',
   orange: '#f69e8c',
 }
