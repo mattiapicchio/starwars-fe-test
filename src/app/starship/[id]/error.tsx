@@ -1,12 +1,14 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import { QUERY_KEY } from '@/utils/queryKeys'
 
-export default function Error({ error }: { error: Error & { digest?: string } }) {
-  const router = useRouter()
-
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
   useEffect(() => {
     // TODO: Log the error to an error reporting service
     // eslint-disable-next-line no-console
@@ -19,8 +21,8 @@ export default function Error({ error }: { error: Error & { digest?: string } })
       <button
         className="button-primary"
         onClick={
-          // Attempt to recover by re-rendering the initial page
-          () => router.push(`/?${QUERY_KEY.PAGE}=1`)
+          // Attempt to recover by trying to re-render the segment
+          () => reset()
         }
       >
         Try again
