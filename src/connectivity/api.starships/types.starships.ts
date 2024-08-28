@@ -6,9 +6,9 @@ export type FetchStarshipsResponse = {
 }
 
 export type Starship = {
-  id: string
   name: string
   manufacturer: string
   created: string // ISO 8601 date format
-  crew: number
+  crew: string
+  url: string
 }
