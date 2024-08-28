@@ -10,6 +10,8 @@ export async function fetchStarship({ id }: { id: string }) {
   return await fetchRequest<Starship>(`starships/${id}`)
 }
 
-export async function searchStarships({ input }: { input: string }) {
-  return await fetchRequest<FetchStarshipsResponse>(`starships/?search=${input}`)
+export async function searchStarships({ input, page }: { input: string; page?: number }) {
+  return await fetchRequest<FetchStarshipsResponse>(
+    `starships/?search=${input}&${QUERY_KEY.PAGE}=${page}`,
+  )
 }

@@ -3,27 +3,41 @@ import { classnames } from '@/utils/classnames'
 import Link from 'next/link'
 
 type PaginationProps = {
-  starshipsData: FetchStarshipsResponse
+  listingData: FetchStarshipsResponse
   className?: string
   currentPage: number
+  searchQuery?: string
 }
 
 export default async function Pagination({
-  starshipsData,
+  listingData,
+  searchQuery,
   currentPage,
   className,
 }: PaginationProps) {
-  const { previous, next } = starshipsData
+  const { previous, next } = listingData
+
+  const handlePrevLink = () => {
+    if (searchQuery !== '') return `?page=${currentPage - 1}&query=${searchQuery}`
+
+    return `?page=${currentPage - 1}`
+  }
+
+  const handleNextLink = () => {
+    if (searchQuery !== '') return `?page=${currentPage + 1}&query=${searchQuery}`
+
+    return `?page=${currentPage + 1}`
+  }
 
   return (
     <div className={classnames('flex w-full items-center justify-center gap-8', className)}>
       {previous && (
-        <Link href={`?page=${currentPage - 1}`} className="button-primary">
+        <Link href={handlePrevLink()} className="button-primary">
           <span>Prev</span>
         </Link>
       )}
       {next && (
-        <Link href={`?page=${currentPage + 1}`} className="button-primary">
+        <Link href={handleNextLink()} className="button-primary">
           <span>Next</span>
         </Link>
       )}
